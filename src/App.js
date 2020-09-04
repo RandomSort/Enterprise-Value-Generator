@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
-
+import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Values from './Values';
+import data from "./values.json"
 function App() {
+  const [selected, setSelected] = useState([]);
+  const generate = () => {
+    const shuffled = data.sort(() => 0.5 - Math.random());
+    setSelected(shuffled.slice(0,4))
+
+  }
+ // Get sub-array of first n elements after shuffled
   return (
+    
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Values data={selected} />
+        <Button onClick={() => generate()}>Generate Values</Button>
       </header>
     </div>
   );
+
+ 
 }
 
 export default App;
