@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Values from './Values';
 import data from "./values.json"
+import { Container, Row, Col } from 'react-bootstrap';
+
 function App() {
   const [selected, setSelected] = useState([]);
   const generate = () => {
@@ -15,10 +17,14 @@ function App() {
   return (
     
     <div className="App">
-      <header className="App-header">
+        
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md="auto"><h1>Enterprise Values Generator</h1></Col>
+        </Row>
         <Values data={selected} />
         <Button onClick={() => generate()}>Generate Values</Button>
-      </header>
+      </Container>
     </div>
   );
 
